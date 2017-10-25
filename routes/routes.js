@@ -1,33 +1,38 @@
 //import the required modules
 var express = require('express');
 var router = express.Router();
-var employeeController = require('../controllers/employeeController');
+var customerController = require('../controllers/customerController');
+var productController=require('../controllers/productController');
 
 
 //api for posting the data of employee
-router.route('/v1/Employee/upload')
-    .post(employeeController.postEmployee);
+router.route('/v1/Customer/create')
+    .post(customerController.postUser);
 
 //api for getting the all employees from the db
-router.route('/v1/getAllEmployee')
-    .get(employeeController.getAllEmployee);
+router.route('/v1/getAllCustomers')
+    .get(customerController.getAllCustomers);
+//api to find user with username
+router.route('/v1/getCustomer')
+    .post(customerController.postUsername);
 
-//api for getting the employee data from his id
-router.route('/v1/getEmployee/:id')
-    .get(employeeController.getEmployee);
+    router.route('/v1/getallproducts')
+    .get(productController.getAllProducts);
 
 
-//api for searching employee name
-router.route('/v1/search/:name')
-    .get(employeeController.searchEmployee);
 
-//api for updating the data of the employee
-router.route('/v1/update/:employeeId')
-    .put(employeeController.updateEmployee);
 
-//api for deleting the employee
-    router.route('/v1/delete')
-        .delete(employeeController.deleteEmployee);
+    //api for getting the product data from its id
+router.route('/v1/getProduct/:productId')
+.get(productController.getProduct);
+
+router.route('/v1/getProductById')
+.post(productController.getProById);
+
+
+
+
+
 
 //export the router
 module.exports = router;
