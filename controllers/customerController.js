@@ -1,6 +1,7 @@
 //Import required module
 var Customer = require('../models/customerRegistered');
-
+//Import required module
+var CustomerBill = require('../models/customerBill');
 
 // export the postuser method
 exports.postUser = function (req, res) {
@@ -29,6 +30,33 @@ exports.postUser = function (req, res) {
     }
   }); // end of save method
 } // end of postuser method
+
+exports.postCustomerBill = function (req, res) {
+  // creating the new customer
+  console.log("in bill")
+  var customerBill = new CustomerBill({
+    name: req.body.name,
+    total1: req.body.total1,
+    
+  
+  });
+
+  customerBill.save(function (error, response) {
+    // handle the error
+    console.log("savingg bill.....");
+
+    if (error) {
+      return error;
+    }
+    else {
+      //send the response to the browser
+      res.json({
+        success: true,
+        body: response
+      });
+    }
+  }); // end of save method
+} // 
 
 exports.postUsername = function (req, res) {
   // creating the new employee

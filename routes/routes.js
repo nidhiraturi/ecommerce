@@ -9,6 +9,8 @@ var productController=require('../controllers/productController');
 router.route('/v1/Customer/create')
     .post(customerController.postUser);
 
+    router.route('/v1/Customer/postBill')
+    .post(customerController.postCustomerBill);
 //api for getting the all employees from the db
 router.route('/v1/getAllCustomers')
     .get(customerController.getAllCustomers);
